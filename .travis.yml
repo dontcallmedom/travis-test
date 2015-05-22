@@ -1,6 +1,7 @@
 language: python
 install:
  - git clone https://github.com/halindrome/linkchecker.git
+ - sudo apt-get -qq update
  - sudo apt-get install libwww-perl libcss-dom-perl dnsutils
 script:
  - dig tools.ietf.org
