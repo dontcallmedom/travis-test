@@ -3,5 +3,7 @@ install:
  - git clone https://github.com/halindrome/linkchecker.git
  - sudo apt-get install libwww-perl libcss-dom-perl
 script:
+ - host tools.ietf.org
+ - ping -c tools.ietf.org
  - "! (perl -T linkchecker/bin/checklink -S 0  -q -b index.html |grep \"^\")"
 env: WIDLPROC_PATH=$TRAVIS_BUILD_DIR/widlproc/obj/widlproc
