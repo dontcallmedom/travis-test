@@ -1,9 +1,9 @@
 language: python
 install:
  - git clone https://github.com/halindrome/linkchecker.git
- - sudo apt-get install libwww-perl libcss-dom-perl bind9-host
+ - sudo apt-get install libwww-perl libcss-dom-perl dnsutils
 script:
- - host tools.ietf.org
+ - dig tools.ietf.org
  - ping -c 10 tools.ietf.org
  - "! (perl -T linkchecker/bin/checklink -S 0  -q -b index.html |grep \"^\")"
 env: WIDLPROC_PATH=$TRAVIS_BUILD_DIR/widlproc/obj/widlproc
