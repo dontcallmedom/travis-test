@@ -2,10 +2,11 @@ language: python
 install:
  - git clone https://github.com/halindrome/linkchecker.git
  - sudo apt-get -qq update
- - sudo apt-get install libwww-perl libcss-dom-perl dnsutils ca-certificates openssl
+ - sudo apt-get install libwww-perl libcss-dom-perl dnsutils ca-certificates openssl  libio-socket-ssl-perl
 script:
  - dig tools.ietf.org
  - ping -c 10 tools.ietf.org
+ - ping6 -c 10 tools.ietf.org
  - "! (perl -T linkchecker/bin/checklink -S 0  -q -b index.html |grep \"^\")"
  - openssl s_client -CApath /etc/ssl/certs/  -connect datatracker.ietf.org:443
 env: WIDLPROC_PATH=$TRAVIS_BUILD_DIR/widlproc/obj/widlproc
